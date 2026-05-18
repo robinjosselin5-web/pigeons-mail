@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Snap</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400&display=swap');
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ─── Scroll Snap Container ─── */
+    html {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      height: 100%;
+    }
+
+    /* ─── Sections ─── */
+    section {
+      height: 100vh;
+      scroll-snap-align: start;
+      scroll-snap-stop: always; /* force arrêt à chaque section */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─── Contenu animé ─── */
+    .content {
+      text-align: center;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    section.visible .content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 300;
+      max-width: 420px;
+      line-height: 1.7;
+      opacity: 0.75;
+    }
+
+    /* ─── Deco shape ─── */
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* ─── Section 1 ─── */
+    #s1 { background: #0d0d0d; color: #f5f0e8; }
+    #s1 .shape { width: 500px; height: 500px; background: #c8a96e; top: -100px; right: -100px; }
+
+    /* ─── Section 2 ─── */
+    #s2 { background: #f5f0e8; color: #0d0d0d; }
+    #s2 .shape { width: 400px; height: 400px; background: #a8c4b8; bottom: -80px; left: -80px; }
+
+    /* ─── Section 3 ─── */
+    #s3 { background: #1a2e2a; color: #e8f0ed; }
+    #s3 .shape { width: 450px; height: 450px; background: #4a9b7f; top: 50%; right: -120px; transform: translateY(-50%); }
+
+    /* ─── Section 4 ─── */
+    #s4 { background: #2a1a2e; color: #ede8f0; }
+    #s4 .shape { width: 600px; height: 600px; background: #8b5cf6; bottom: -200px; left: 50%; transform: translateX(-50%); }
+
+    /* ─── Indicateur de navigation ─── */
+    .nav-dots {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      z-index: 100;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    .dot.active {
+      background: white;
+      transform: scale(1.3);
+    }
+
+    /* Dot adaptatif selon section claire/sombre */
+    .dot.dark {
+      background: rgba(0,0,0,0.2);
+      border-color: rgba(0,0,0,0.4);
+    }
+    .dot.dark.active {
+      background: #0d0d0d;
+    }
+
+    /* ─── Flèche bas ─── */
+    .arrow {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.5;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    #s4 .arrow { display: none; }
+
+    .arrow svg { width: 28px; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation dots -->
+  <nav class="nav-dots" id="dots">
+    <div class="dot dark active" data-target="s1"></div>
+    <div class="dot dark" data-target="s2"></div>
+    <div class="dot" data-target="s3"></div>
+    <div class="dot" data-target="s4"></div>
+  </nav>
+
+  <!-- Section 1 -->
+  <section id="s1">
+    <div class="shape"></div>
+    <div class="content">
+      <p class="label">Section 01</p>
+      <h2>L'Origine</h2>
+      <p>Bienvenue. Faites défiler pour explorer chaque univers, section par section.</p>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#f5f0e8" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="s2">
+    <div class="shape"></div>
+    <div class="content">
+      <p class="label">Section 02</p>
+      <h2>La Lumière</h2>
+      <p>Un espace ouvert et clair, pour poser les idées et laisser respirer la pensée.</p>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="s3">
+    <div class="shape"></div>
+    <div class="content">
+      <p class="label">Section 03</p>
+      <h2>La Forêt</h2>
+      <p>Une atmosphère profonde et végétale. Le calme avant la révélation finale.</p>
+    </div>
+    <div class="arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#e8f0ed" stroke-width="1.5">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="s4">
+    <div class="shape"></div>
+    <div class="content">
+      <p class="label">Section 04</p>
+      <h2>Le Cosmos</h2>
+      <p>La destination finale. Un espace infini, mystérieux, plein de possibilités.</p>
+    </div>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    const dots = document.querySelectorAll('.dot');
+
+    // ─── Intersection Observer : détecte la section visible ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animation contenu
+          entry.target.classList.add('visible');
+
+          // Mise à jour des dots
+          const idx = [...sections].indexOf(entry.target);
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === idx);
+          });
+
+          // Couleur des dots selon fond de section
+          const lightSections = ['s2'];
+          const isLight = lightSections.includes(entry.target.id);
+          dots.forEach(dot => {
+            dot.classList.toggle('dark', isLight);
+          });
+        }
+      });
+    }, { threshold: 0.6 });
+
+    sections.forEach(s => observer.observe(s));
+
+    // ─── Clic sur les dots ───
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        document.getElementById(dot.dataset.target).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
