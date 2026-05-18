@@ -24,6 +24,18 @@
     font-family: var(--main-font);
 }
 
+/* ─── Scroll Snap Container ─── */
+html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    height: 100%;
+}
+
 /* Navbar */
 
 nav {
@@ -100,11 +112,14 @@ header {
     background-color: var(--four-color);
     padding: 144px 0px 72px 0px;
     width: 100%;
-    min-height: 50vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 32px;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 
     h1 {
         text-align: center;
@@ -156,9 +171,23 @@ main {
 
     background-color: var(--four-color);
 
-    /* section {
-        width: 100%;
+    section {
         height: 100vh;
-        border: 5px solid var(--main-color);
-    } */
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    section:first-child {
+        background-color: red;
+    }
+
+    section:last-child {
+        background-color: blue;
+    }
 }
