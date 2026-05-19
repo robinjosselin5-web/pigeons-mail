@@ -1,0 +1,94 @@
+/* ============================================================
+   tablet.css — Styles TABLETTE (>= 768px)
+   À partir de 768px, les sections passent à une grille 2 colonnes.
+   Chaque article occupe 100vh en hauteur (une seule ligne).
+   ============================================================ */
+
+@media screen and (min-width: 768px) {
+
+    /* ─── Navbar ─── */
+    nav {
+        height: 72px;
+        font-size: 0.9rem;
+
+        ul {
+            column-gap: 8px;
+
+            li {
+                padding: 8px 14px;
+            }
+        }
+
+        a i {
+            font-size: 1.8rem;
+        }
+    }
+
+    /* ─── Header ─── */
+    header {
+        padding: 180px 32px 72px 32px;
+        row-gap: 32px;
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        img {
+            max-height: 45vh;
+        }
+    }
+
+    /* ─── Main — TABLETTE ───
+       section = 100vh
+       Grille 2 colonnes côte à côte, chaque article = 100vh
+       ─────────────────────────── */
+    main {
+
+        section {
+            height: 100vh;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+
+            article {
+                height: 100vh;
+                padding: 100px 32px 32px 32px;
+
+                img {
+                    max-height: 70%;
+                    margin-top: 10%;
+                }
+
+                &.text-style {
+                    padding: 100px 48px 48px 48px;
+                    align-items: flex-start;
+                    justify-content: center;
+                }
+
+                h2 {
+                    font-size: 2.4rem;
+                    border-bottom-width: 6px;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                    -webkit-line-clamp: 10;
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+    /* ─── Footer ─── */
+    footer {
+        padding-top: 64px;
+
+        img {
+            max-height: 240px;
+        }
+
+        section {
+            padding: 28px 32px;
+            margin-top: 32px;
+        }
+    }
+}

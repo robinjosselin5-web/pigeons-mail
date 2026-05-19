@@ -1,3 +1,9 @@
+/* ============================================================
+   style.css — Base styles + MOBILE (< 768px)
+   Mobile-first : ce fichier définit le comportement mobile par défaut.
+   Les articles font 50vh → section = 100vh (2 articles empilés).
+   ============================================================ */
+
 /* FONT */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
@@ -14,7 +20,6 @@
 }
 
 /* GLOBAL */
-
 * {
     box-sizing: border-box;
     text-decoration: none;
@@ -32,12 +37,14 @@ html {
 }
 
 body {
-    font-family: 'DM Sans', sans-serif;
     height: 100%;
 }
 
-/* Navbar */
+img {
+    max-width: 100%;
+}
 
+/* ─── Navbar ─── */
 nav {
     background-color: var(--third-color);
     color: #F2E8CF;
@@ -47,76 +54,75 @@ nav {
     position: fixed;
     z-index: 9999;
     width: 100%;
+    font-size: 0.75rem;
+    height: 72px;
 
     ul {
         display: flex;
-        column-gap: 16px;
+        column-gap: 2px;
         font-weight: 500;
         position: relative;
 
         li {
-            padding: 8px 16px;
+            padding:16px;
             position: relative;
         }
-        
+
         a {
             position: relative;
             transition: all 0.2s ease-out;
         }
+
         a:hover {
             color: var(--four-color);
             font-weight: 600;
         }
-        
+
         li:last-child {
-            
-            background-color: var(--main-color);
-            border: 2px solid var(--main-color);
-            border-radius: 8px;
+
             transition: all 0.4s ease-out;
+            a {            
+                background-color: var(--main-color);
+                border: 2px solid var(--main-color);
+                color: var(--four-color);            
+                border-radius: 8px;            
+                padding: 8px 16px;
+            }
 
-            a {
-                color: var(--four-color);
-            }              
-        }
-
-        li:last-child:hover {
-            scale: 1.1;
-            border: 2px solid var(--main-color);
-            background-color: var(--four-color);
-            a {
-                color: var(--main-color);
+            a:hover {
+                border: 2px solid var(--main-color);
+                background-color: var(--four-color);
+                color: var(--main-color);                
             }
         }
     }
 
     a {
-
-        margin-top: 4px;
+        margin-top: 8px;
         color: var(--main-color);
         transition: all 0.4s ease-out;
+
         i {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: var(--main-color);
         }
+
         &:hover {
-            scale: 1.2;;
+            scale: 1.2;
         }
     }
 }
 
-/* Header */
-
+/* ─── Header ─── */
 header {
-    
     background-color: var(--four-color);
-    padding: 144px 0px 72px 0px;
+    padding: 120px 16px 48px 16px;
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 32px;
+    row-gap: 24px;
 
     scroll-snap-align: start;
     scroll-snap-stop: always;
@@ -124,25 +130,34 @@ header {
     h1 {
         text-align: center;
         color: var(--main-color);
-        font-size: 4rem;
+        font-size: 2.2rem;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 35vh;
+        object-fit: contain;
     }
 
     ul {
-        margin-top: 32px;
+        margin-top: 16px;
         display: flex;
-        column-gap: 32px;
+        column-gap: 16px;
         font-weight: 600;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 12px;
 
         li:first-child {
             background-color: var(--third-color);
             border: 2px solid var(--third-color);
+
             a {
                 color: var(--main-color);
             }
         }
-            
+
         li {
-            
             padding: 8px 16px;
             background-color: var(--main-color);
             border: 2px solid var(--main-color);
@@ -151,24 +166,26 @@ header {
 
             a {
                 color: var(--four-color);
-            }              
+            }
         }
 
         li:hover {
             scale: 1.1;
             border: 2px solid var(--main-color);
             background-color: var(--four-color);
+
             a {
                 color: var(--main-color);
             }
         }
     }
-} 
+}
 
-/* Main */
-
+/* ─── Main — MOBILE ───
+   Chaque section = 100vh
+   Chaque article = 50vh (2 articles empilés en colonne)
+   ─────────────────────── */
 main {
-
     background-color: var(--four-color);
 
     section {
@@ -176,57 +193,76 @@ main {
         scroll-snap-align: start;
         scroll-snap-stop: always;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh 50vh;
         position: relative;
         overflow: hidden;
-        margin: 0 auto;
-        
-        article {
 
-            padding-top: 144px;
-            text-align: center;
+        article {
+            height: 50vh;
+            padding: 56px 16px 16px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+            img {
+                max-height: 100%;
+                max-width: 100%;
+                object-fit: contain;
+            }
 
             &.text-style {
                 background-color: var(--main-color);
                 color: var(--four-color);
-                padding: 144px;
-                padding-top: 288px;
                 text-align: left;
+                padding: 56px 20px 20px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
             }
 
             &.right {
                 text-align: right;
+                align-items: flex-end;
             }
-            
+
             h2 {
-                font-size: 3rem;
-                border-bottom: 8px solid var(--four-color);
-                padding: 8px;
+                font-size: 1.8rem;
+                border-bottom: 4px solid var(--four-color);
+                padding-bottom: 6px;
                 text-transform: uppercase;
+                margin-bottom: 12px;
+                width: 100%;
             }
 
             p {
-                margin-top: 36px;
-            }
-
-            img {
-                margin-top: 20%;
+                font-size: 0.82rem;
+                line-height: 1.5;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 6;
+                -webkit-box-orient: vertical;
             }
         }
     }
 }
 
+/* ─── Footer ─── */
 footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--four-color);
-    padding-top: 72px;
-
+    padding-top: 48px;
 
     scroll-snap-align: start;
     scroll-snap-stop: always;
+
+    img {
+        max-height: 180px;
+        object-fit: contain;
+    }
 
     a {
         background-color: var(--main-color);
@@ -235,7 +271,8 @@ footer {
         transition: all 0.4s ease-out;
         color: var(--four-color);
         padding: 8px 16px;
-        margin-top: 32px;
+        margin-top: 24px;
+        font-size: 0.9rem;
     }
 
     a:hover {
@@ -248,19 +285,21 @@ footer {
     section {
         background-color: var(--second-color);
         width: 100%;
-        padding: 32px;
-        margin-top: 32px;
+        padding: 24px;
+        margin-top: 24px;
         text-align: center;
 
         a {
             padding: 0;
             background-color: inherit;
             border: none;
+            margin-top: 0;
         }
 
         a:hover {
             border: none;
             background-color: inherit;
+            scale: 1;
         }
     }
 }
