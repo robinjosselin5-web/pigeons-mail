@@ -1,0 +1,135 @@
+/* ============================================================
+   form.css — Overrides style.css pour la section #form
+   ============================================================ */
+
+/* SECTION FORM — override du grid mobile-first de main section */
+#form {
+    display: flex !important;
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+    scroll-snap-align: none !important;
+    scroll-snap-stop: unset !important;
+
+    flex-direction: column;
+    gap: 32px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 288px 24px 60px;
+}
+
+/* CARD — override de article dans main */
+#form article {
+    height: auto !important;
+    padding: 30px !important;
+    display: block !important;
+    align-items: unset !important;
+    justify-content: unset !important;
+    overflow: visible !important;
+
+    background: white;
+    border-radius: 20px;
+    width: 320px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+#form article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* TITRES — override du h2 de main article */
+#form h2 {
+    font-size: 1.5rem !important;
+    border-bottom: none !important;
+    text-transform: none !important;
+    margin-bottom: 25px !important;
+    padding-bottom: 0 !important;
+    width: auto !important;
+    color: #386641;
+}
+
+/* FORM */
+#form form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* INPUT + SELECT */
+#form input,
+#form select {
+    padding: 15px;
+    border: 2px solid #A7C957;
+    border-radius: 14px;
+    background: #F2E8CF;
+    font-size: 1rem;
+    color: #386641;
+    outline: none;
+    transition: all 0.25s ease;
+    width: 100%;
+}
+
+/* PLACEHOLDER */
+#form input::placeholder {
+    color: #64994E;
+}
+
+/* HOVER */
+#form input:hover,
+#form select:hover {
+    border-color: #64994E;
+    background: #ffffff;
+}
+
+/* FOCUS / ACTIVE */
+#form input:focus,
+#form select:focus {
+    border-color: #386641;
+    box-shadow: 0 0 0 4px rgba(56, 102, 65, 0.2);
+    background: white;
+    transform: scale(1.02);
+}
+
+/* SELECT CURSOR */
+#form select {
+    cursor: pointer;
+}
+
+/* OPTION */
+#form option {
+    background: white;
+    color: #386641;
+}
+
+/* BOUTON */
+#form button {
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: #BC4749;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+#form button:hover {
+    background: #a63d3f;
+    transform: translateY(-2px);
+}
+
+#form button:active {
+    transform: scale(0.97);
+}
+
+/* TABLET — les cartes passent côte à côte */
+@media (min-width: 640px) {
+    #form {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}

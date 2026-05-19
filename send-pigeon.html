@@ -7,28 +7,68 @@
 
     <!-- Mobile first : style.css (base + mobile), puis tablet, puis desktop -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/tablet.css">
     <link rel="stylesheet" href="css/desktop.css">
 
     <script src="https://kit.fontawesome.com/c4ab95abda.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    
     <nav>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">Send pigeon</a></li>
+            <li><a href="send-pigeon.html">Send pigeon</a></li>
         </ul>
-        <a href=""><i class="fa-solid fa-circle-user"></i></a>
-    </nav>
+        <a href="#"><i class="fa-solid fa-circle-user"><p>Profile</p></i></a>
+    </nav>   
 
     <header>
         <h1>Pigeon's Mail</h1>
         <img src="img/header-image.png" alt="image principale du site">
 
         <ul>
-            <li><a href="javascript:void(0)" class="btn-to-section" data-target="s1">Send Pigeon</a></li>
+            <!-- <li><a href="javascript:void(0)" class="btn-to-section" data-target="s1">Discover</a></li> -->
+            <li class="btn-low-green"><a href="javascript:void(0)" class="btn-to-section" data-target="s1">Send Pigeon</a></li>
         </ul>
+
     </header>
+
+    <main>
+        <section id="form">
+            <article>
+                <h2>Your ID</h2>
+                <form action="">
+                    <input type="text" placeholder="Name">
+                    <input type="email" placeholder="Email">
+                </form>
+            </article>
+            <article>
+                <h2>Where pigeon go</h2>
+                    <form action="">
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Adress">
+                        
+                        <select name="country" id="country">
+                            <option value="">Country</option>
+                            <option value="dog">France</option>
+                            <option value="cat">Spain</option>
+                            <option value="hamster">Italia</option>
+                            <option value="parrot">Deutchland</option>
+                            <option value="spider">Swiss</option>
+                            <option value="goldfish">Belgium</option>
+                        </select>
+                    </form>
+            </article>
+        </section>        
+    </main>
+
+    <footer>
+        <section>
+            <p>Copyright - <a href="#">Contact</a></p>
+        </section>
+    </footer>
+
 </body>
 </html>

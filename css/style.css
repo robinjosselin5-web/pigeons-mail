@@ -63,21 +63,23 @@ nav {
         li {
             padding:16px;
             position: relative;
+            
+            a {
+                position: relative;
+                transition: all 0.2s ease-out;
+            }
+
+            a:hover {
+                color: var(--four-color);
+                font-weight: 600;
+            }
         }
 
-        a {
-            position: relative;
-            transition: all 0.2s ease-out;
-        }
-
-        a:hover {
-            color: var(--four-color);
-            font-weight: 600;
-        }
 
         li:last-child {
 
             transition: all 0.4s ease-out;
+            
             a {            
                 background-color: var(--main-color);
                 border: 2px solid var(--main-color);
@@ -102,6 +104,10 @@ nav {
         i {
             font-size: 1.5rem;
             color: var(--main-color);
+
+            p {
+                display: none;
+            }
         }
 
         &:hover {
@@ -144,17 +150,30 @@ header {
         flex-wrap: wrap;
         justify-content: center;
         row-gap: 12px;
-
-        li:first-child {
+        
+        li {
+            padding: 8px 16px;
             background-color: var(--third-color);
             border: 2px solid var(--third-color);
+            border-radius: 8px;
+            transition: all 0.4s ease-out;
 
             a {
                 color: var(--main-color);
             }
         }
 
-        li {
+        li:hover {
+            scale: 1.1;
+            border: 2px solid var(--main-color);
+            background-color: var(--four-color);
+
+            a {
+                color: var(--main-color);
+            }
+        }
+
+        .btn-low-green {
             padding: 8px 16px;
             background-color: var(--main-color);
             border: 2px solid var(--main-color);
@@ -166,7 +185,7 @@ header {
             }
         }
 
-        li:hover {
+        .btn-low-green:hover {
             scale: 1.1;
             border: 2px solid var(--main-color);
             background-color: var(--four-color);
