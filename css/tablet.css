@@ -64,6 +64,10 @@
                     justify-content: center;
                 }
 
+                &.right {
+                    grid-column-start: 2;
+                }
+
                 h2 {
                     font-size: 2.4rem;
                     border-bottom-width: 6px;
@@ -71,7 +75,7 @@
 
                 p {
                     font-size: 0.9rem;
-                    -webkit-line-clamp: 10;
+                    line-clamp: 10;
                     margin-top: 20px;
                 }
             }

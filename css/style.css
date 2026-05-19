@@ -38,10 +38,7 @@ html {
 
 body {
     height: 100%;
-}
-
-img {
-    max-width: 100%;
+    background-color: var(--four-color);
 }
 
 /* ─── Navbar ─── */
@@ -225,6 +222,7 @@ main {
             &.right {
                 text-align: right;
                 align-items: flex-end;
+                grid-row-start: 1;
             }
 
             h2 {
@@ -241,7 +239,7 @@ main {
                 line-height: 1.5;
                 overflow: hidden;
                 display: -webkit-box;
-                -webkit-line-clamp: 6;
+                line-clamp: 6;
                 -webkit-box-orient: vertical;
             }
         }
