@@ -27,3 +27,27 @@ function loadIncludes() {
 }
 
 document.addEventListener("DOMContentLoaded", loadIncludes);
+
+
+let order = null;
+let isConfirmed = false;
+
+if (isConfirmed === false) {
+    while (order !== "thé" && order !== "café") {
+    order = prompt("thé ou café ?");
+    }
+
+    order += confirm("sucre ?") ? "sucre" : "sans sucre";
+
+    if (confirm("lait ?")) {
+      if (confirm("végétal ?")) {
+        order += ", lait végétal";
+    } else {
+        order += ", lait de vache";
+    }
+    }
+
+    isConfirmed = confirm(`confirmer votre commande : ${order}`);
+}
+
+alert(`votre ${order} sera prêt dans une minute`);
