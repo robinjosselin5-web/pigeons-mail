@@ -3,6 +3,17 @@
    ============================================================ */
 
 /* SECTION FORM — override du grid mobile-first de main section */
+
+html {
+    scroll-snap-type: none;
+    scroll-behavior: smooth;
+}
+
+header,
+section {
+    min-height: auto !important;
+}
+
 #form {
     display: flex !important;
     height: auto !important;
@@ -17,6 +28,7 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 288px 24px 60px;
+    max-width: 1280px;
 }
 
 /* CARD — override de article dans main */
@@ -60,7 +72,8 @@
 
 /* INPUT + SELECT */
 #form input,
-#form select {
+#form select,
+#form textarea {
     padding: 15px;
     border: 2px solid #A7C957;
     border-radius: 14px;
@@ -79,14 +92,16 @@
 
 /* HOVER */
 #form input:hover,
-#form select:hover {
+#form select:hover,
+#form textarea:hover {
     border-color: #64994E;
     background: #ffffff;
 }
 
 /* FOCUS / ACTIVE */
 #form input:focus,
-#form select:focus {
+#form select:focus,
+#form textarea:focus {
     border-color: #386641;
     box-shadow: 0 0 0 4px rgba(56, 102, 65, 0.2);
     background: white;
@@ -126,10 +141,21 @@
     transform: scale(0.97);
 }
 
-/* TABLET — les cartes passent côte à côte */
-@media (min-width: 640px) {
-    #form {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+
+#form article:nth-child(3) {
+    width: 60%;
+    min-width: 400px;
+}
+
+#form article textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 8px;
+}
+
+#form article:last-of-type {
+    width: 100%;
+    text-align: center;
+    background: none;
+    box-shadow: none;
 }

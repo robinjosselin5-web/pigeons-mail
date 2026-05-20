@@ -95,4 +95,10 @@
             margin-top: 32px;
         }
     }
+
+    /* Form */
+    #form {
+        flex-direction: row;
+        align-items: center;
+    }
 }

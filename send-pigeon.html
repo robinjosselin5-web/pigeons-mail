@@ -15,14 +15,7 @@
 </head>
 <body>
     
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="send-pigeon.html">Send pigeon</a></li>
-        </ul>
-        <a href="#"><i class="fa-solid fa-circle-user"><p>Profile</p></i></a>
-    </nav>   
+    <div data-include="component/navbar.html"></div>
 
     <header>
         <h1>Pigeon's Mail</h1>
@@ -30,7 +23,7 @@
 
         <ul>
             <!-- <li><a href="javascript:void(0)" class="btn-to-section" data-target="s1">Discover</a></li> -->
-            <li class="btn-low-green"><a href="javascript:void(0)" class="btn-to-section" data-target="s1">Send Pigeon</a></li>
+            <li class="btn-low-green"><a href="#form" class="btn-to-section" data-target="s1">Send Pigeon</a></li>
         </ul>
 
     </header>
@@ -61,14 +54,20 @@
                         </select>
                     </form>
             </article>
+            <article>
+                <h2>Your message</h2>
+                <textarea name="Message" id="message">
+                    Your Message
+                </textarea>
+            </article>
+            <article>
+                <button>Send It !</button>  
+            </article>
         </section>        
     </main>
 
-    <footer>
-        <section>
-            <p>Copyright - <a href="#">Contact</a></p>
-        </section>
-    </footer>
+    <div data-include="component/footer.html"></div>
 
+    <script src="js/app.js"></script>
 </body>
 </html>
