@@ -47,20 +47,15 @@
     }
 
     /* ─── Main — DESKTOP ───
-       section = 100vh, grille 2 colonnes,
-       articles pleine hauteur avec typographie agrandie.
-       ─────────────────────────── */
+        section = 100vh, grille 2 colonnes,
+        articles pleine hauteur avec typographie agrandie.
+        ─────────────────────────── */
     main {
+        max-width: 1920px;
+        margin: 0 auto;
 
         section {
-            height: 100vh;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 1fr;
-            max-width: 1920px;
-            margin: 0 auto;
-
             article {
-                height: 100vh;
                 padding: 120px 64px 64px 64px;
 
                 img {
@@ -68,10 +63,7 @@
                     margin-top: 15%;
                 }
 
-                &.text-style {
-                    padding: 144px 96px 96px 96px;
-                }
-
+                &.text-style,
                 &.right {
                     padding: 144px 96px 96px 96px;
                 }
